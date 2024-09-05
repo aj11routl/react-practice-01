@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles.css';
+import { useState } from 'react';
 
-function App() {
+function Square({ value }) {
+
+  function handleClick() {
+    console.log('clicked!' + {value}.value);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <button
+      className="square"
+      onClick={handleClick}
+    >
+      {value}
+    </button>
   );
 }
 
-export default App;
+function Row() {
+  return (
+    <>
+      <div className="board-row">
+        <Square value="1" />
+        <Square value="2" />
+        <Square value="3" />
+      </div>
+    </>
+  );
+}
+
+export default function Board() {
+  return (
+    <>
+    <div className="board-row">
+      <Square value="1" />
+      <Square value="2" />
+      <Square value="3" />
+    </div>
+    <div className="board-row">
+      <button className="square">X</button>
+      <button className="square">X</button>
+      <button className="square">X</button>
+    </div>
+      
+
+    </>
+  );
+}
